@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../context/authContext'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { Alert } from './Alert'
 
 export default function Register() {
 
@@ -35,7 +36,7 @@ export default function Register() {
 
   return(
     <div className='self-center mx-auto'>
-      {error ?? <p className='bg-red-500'>{error}</p>}
+      {(error) ?? <Alert message={error} />}
       <div className="bg-white self-center mx-auto p-8 rounded-xl shadow-lg w-96">
         <form onSubmit={handleSubmit}>
           <div className="relative z-0 mb-6 w-full group">
@@ -65,9 +66,10 @@ export default function Register() {
               />
               <label htmlFor="repeat_password" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirmación password</label>
           </div>
-          <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+          <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrarse</button>
         </form>
       </div>
+      <p className="text-gray-700 text-center py-5">Ya tienes una cuenta? <Link to="/login" className="text-blue-700">Inicia sesión</Link></p>
     </div>
   )
 }
